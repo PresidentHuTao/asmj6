@@ -1,0 +1,31 @@
+<div xmlns:th="https://www.thymeleaf.org">
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/security/login/form}">Sign In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/security/logout}">Sign Out</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/order/list}">Your Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/admin/home/index}">Adminstration</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav navbar-right">
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/}">Welcome You</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <br>
+</div>

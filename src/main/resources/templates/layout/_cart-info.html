@@ -1,0 +1,9 @@
+<div xmlns:th="https://www.thymeleaf.org">
+    <div class="card bg-primary text-white">
+        <div class="card-body text-center">
+            <a class="nav-link" th:href="@{/cart/view}">
+                <!--number : 2 để hiện thị 2 chữ số thập phân-->
+                <i class="bi-cart-fill"></i> {{cart.count}} items x {{cart.amount | number : 2}} biden</a>
+        </div>
+    </div>
+</div>

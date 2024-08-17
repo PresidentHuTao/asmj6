@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<main th:object="${item}">
+    <div class="row">
+        <div class="card text-white" style="border: 2px solid blue">
+            <div class="card-body text-center">
+                <img th:src="@{|/assets/images/*{image}|}">
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="card" style="border: 2px solid blue">
+            <div class="card-body">
+                <ul>
+                    <li th:text="*{name}"></li>
+                    <li th:text="*{price}"></li>
+                    <li th:text="*{createDate}"></li>
+                    <li th:text="*{category.name}"></li>
+                </ul>
+            </div>
+            <div class="card-footer text-right">
+                <button th:attr="ng-click=@{|cart.add(${item.id})|}" class="btn btn-success">
+                    <i class="bi-cart-fill"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="card" style="border: 2px solid blue">
+            <div class="card-heading"><b>Sản phẩm cùng loại</b></div>
+            <div class="card-body">
+                <ul>
+                    <li th:each="p:*{category.product}">
+                        <a th:href="@{|/product/detail/${p.id}|}" th:text="${p.name}"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <br>
+</main>
+<!--nếu muốn đoạn mã vừa ko bị đánh giá bởi html vừa ko bị đánh giá bởi thim líp -->
+<!--thì cách duy nhất là vứt ra ngoài thẻ dính lỗi (như th này là thẻ main), cách-->
+<!--cmt kép cũng ko được (cmt của thim líp là /**/)-->
+<!--    <h1>[[${item.name}]]</h1>-->
+<!--    <h1>[[${item.category.name}]]</h1>-->
+<!--    CÁC SẢN PHẨM CÙNG LOẠI:-->
+<!--    <ul>-->
+<!--        mapping 2 chiều để truy xuất sản phẩm cùng loại cho nhanh-->
+<!--        <li th:each="p:${item.category.product}">-->
+<!--            <a th:href="@{|/product/detail/${p.id}|}">[[${p.name}]]</a>-->
+<!--        </li>-->
+<!--    </ul>-->
+</body>
+</html>

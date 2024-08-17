@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{/layout/index :: dynamic(~{::main})}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+<main class="row">
+    <div th:each="p:${items}" class="col-sm-4">
+        <div class="card bg-primary text-center">
+            <div class="card-header text-white">
+                <div class="card-title" th:utext="${p.name}"></div>
+            </div>
+            <div class="card-body">
+                <a th:href="@{|/product/detail/${p.id}|}">
+                    <img th:src="@{|/assets/images/${p.image}|}" style="width:100%; height: 100%">
+                </a>
+            </div>
+            <div class="card-footer text-right">
+                <b>$[[${p.price}]]</b>
+                <!--vì đã gọi ra biến cart nên tự lưu sp vào items (items nằm trong cart)-->
+                <button th:attr="ng-click=@{|cart.add(${p.id})|}" class="btn btn-success">
+                    <i class="bi-cart-fill"></i>
+                </button>
+            </div>
+        </div>
+        <br>
+    </div>
+</main>
+</body>
+</html>

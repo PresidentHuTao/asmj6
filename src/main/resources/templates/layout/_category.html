@@ -1,0 +1,11 @@
+<div>
+    <div class="card bg-primary text-white">
+        <div class="card-header">
+            <b><i class="bi-briefcase-fill"></i> Danh Mục</b>
+        </div>
+        <div class="list-group">
+            <a th:each="c:${categories}" th:href="@{|/product/list?cid=${c.id}|}"
+               class="list-group-item">[[${c.name}]]</a>
+        </div>
+    </div>
+</div>
